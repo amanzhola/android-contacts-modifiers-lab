@@ -10,7 +10,7 @@ import ru.yandex.practicum.contacts.presentation.sort.model.SortType;
 
 import androidx.lifecycle.MutableLiveData;
 
-public class SortViewModel extends BaseBottomSheetViewModel {
+class SortViewModel extends BaseBottomSheetViewModel {
 
     private final SortUiState uiState = new SortUiState();
     private final MutableLiveData<List<SortTypeUI>> sortTypesLiveDate = new MutableLiveData<>();
@@ -34,7 +34,7 @@ public class SortViewModel extends BaseBottomSheetViewModel {
 
     @Override
     public void onApplyClick() {
-        uiState.newSelectedSortType = selectedSortType;
+        uiState.setNewSelectedSortType(selectedSortType);
         updateUiState();
     }
 
@@ -62,7 +62,7 @@ public class SortViewModel extends BaseBottomSheetViewModel {
     }
 
     private void updateUiState() {
-        uiState.isApplyEnable = !defaultSortType.equals(selectedSortType);
+        uiState.setIsApplyEnable (!defaultSortType.equals(selectedSortType));
         uiStateLiveDate.setValue(uiState);
     }
 }
